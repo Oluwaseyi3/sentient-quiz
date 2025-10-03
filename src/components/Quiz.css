@@ -1,0 +1,286 @@
+.quiz-container {
+  width: 100%;
+  max-width: 1000px;
+  padding: 40px 20px;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.question-progress {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.progress-dot {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.progress-dot.completed {
+  background: white;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
+
+.progress-dot.active {
+  background: linear-gradient(135deg, #fff 0%, #ffe6f5 100%);
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.5);
+  transform: scale(1.1);
+}
+
+.progress-dot.upcoming {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.check-mark {
+  width: 20px;
+  height: 20px;
+  background: #ff1f8f;
+  border-radius: 50%;
+}
+
+.score-badge {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.score-label {
+  font-size: 0.9em;
+  opacity: 0.9;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-value {
+  font-size: 1.8em;
+  font-weight: 800;
+  line-height: 1;
+  margin-top: 5px;
+}
+
+.question-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border-radius: 30px;
+  padding: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex: 1;
+}
+
+.question-number {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.95em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.question-text {
+  font-size: 2em;
+  margin-bottom: 40px;
+  line-height: 1.4;
+  font-weight: 700;
+  color: white;
+}
+
+.options-container {
+  display: grid;
+  gap: 20px;
+}
+
+.option-card {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 25px 30px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: all 0.3s ease;
+  border: 3px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.option-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: #ff1f8f;
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.option-card:hover::before {
+  transform: scaleY(1);
+}
+
+.option-card.selected {
+  background: rgba(255, 110, 199, 0.2);
+  border-color: #ff6ec7;
+  transform: translateX(5px);
+}
+
+.option-card.correct {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  border-color: #45a049;
+  color: white;
+  pointer-events: none;
+}
+
+.option-card.correct .option-letter {
+  background: white;
+  color: #4caf50;
+}
+
+.option-card.wrong {
+  background: linear-gradient(135deg, #f44336 0%, #da190b 100%);
+  border-color: #da190b;
+  color: white;
+  pointer-events: none;
+  animation: shake 0.5s;
+}
+
+.option-card.wrong .option-letter {
+  background: white;
+  color: #f44336;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  75% { transform: translateX(10px); }
+}
+
+.option-letter {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ff6ec7 0%, #ff1f8f 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3em;
+  font-weight: 800;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.option-text {
+  flex: 1;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #333;
+}
+
+.option-card.correct .option-text,
+.option-card.wrong .option-text {
+  color: white;
+}
+
+.check-icon,
+.cross-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8em;
+  font-weight: bold;
+  flex-shrink: 0;
+  background: white;
+}
+
+.check-icon {
+  color: #4caf50;
+}
+
+.cross-icon {
+  color: #f44336;
+}
+
+@media (max-width: 768px) {
+  .quiz-container {
+    padding: 20px 10px;
+  }
+
+  .quiz-header {
+    flex-direction: column;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+
+  .question-progress {
+    gap: 10px;
+  }
+
+  .progress-dot {
+    width: 40px;
+    height: 40px;
+  }
+
+  .question-card {
+    padding: 30px 20px;
+  }
+
+  .question-text {
+    font-size: 1.5em;
+    margin-bottom: 30px;
+  }
+
+  .option-card {
+    padding: 20px;
+    gap: 15px;
+  }
+
+  .option-letter {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1em;
+  }
+
+  .option-text {
+    font-size: 1em;
+  }
+
+  .check-icon,
+  .cross-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5em;
+  }
+}
