@@ -119,16 +119,24 @@
 
 .option-card {
   background: rgba(255, 255, 255, 0.95);
-  padding: 25px 30px;
+  padding: 20px;
   border-radius: 20px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 20px;
+  justify-content: space-between;
+  gap: 15px;
   transition: all 0.3s ease;
   border: 3px solid transparent;
   position: relative;
   overflow: hidden;
+}
+
+.option-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
 }
 
 .option-card::before {
@@ -184,16 +192,40 @@
   75% { transform: translateX(10px); }
 }
 
+.option-image-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #ff6ec7 0%, #ff1f8f 100%);
+  padding: 3px;
+}
+
+.option-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.option-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
 .option-letter {
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ff6ec7 0%, #ff1f8f 100%);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: 800;
   flex-shrink: 0;
   transition: all 0.3s ease;
@@ -201,9 +233,10 @@
 
 .option-text {
   flex: 1;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 600;
   color: #333;
+  line-height: 1.4;
 }
 
 .option-card.correct .option-text,
@@ -263,24 +296,37 @@
   }
 
   .option-card {
-    padding: 20px;
-    gap: 15px;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .option-content {
+    gap: 12px;
+  }
+
+  .option-image-container {
+    width: 60px;
+    height: 60px;
+  }
+
+  .option-info {
+    gap: 10px;
   }
 
   .option-letter {
-    width: 40px;
-    height: 40px;
-    font-size: 1.1em;
+    width: 35px;
+    height: 35px;
+    font-size: 1em;
   }
 
   .option-text {
-    font-size: 1em;
+    font-size: 0.95em;
   }
 
   .check-icon,
   .cross-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5em;
+    width: 35px;
+    height: 35px;
+    font-size: 1.3em;
   }
 }

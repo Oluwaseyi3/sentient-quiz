@@ -3,18 +3,40 @@ import { motion } from 'framer-motion'
 import sentientQuestions from '../data/questions'
 import './Quiz.css'
 
+// Available Sentient images
+const sentientImages = [
+  '/G2Qmz45XQAAsT3Q.webp',
+  '/G2QNst5akAA7hLO.webp',
+  '/G2SqF7naQAAVKm2.webp',
+  '/G2TdNvkbMAE7ZQc.webp',
+  '/G2TyLrubMAYi3AM.webp',
+  '/G2UZ3OBWQAAd65H.webp',
+  '/G2UZf5MXEAA_dMC.webp',
+  '/photo_2025-10-02_16-56-28.webp',
+  '/sonbahar_dobby.webp'
+]
+
 function Quiz({ onComplete }) {
   const [questions, setQuestions] = useState([])
+  const [questionImages, setQuestionImages] = useState([])
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [selectedAnswer, setSelectedAnswer] = useState(null)
   const [showFeedback, setShowFeedback] = useState(false)
   const [score, setScore] = useState(0)
   const [userAnswers, setUserAnswers] = useState([])
 
-  // Select 5 random questions on mount
+  // Select 5 random questions on mount and assign images
   useEffect(() => {
     const shuffled = [...sentientQuestions].sort(() => Math.random() - 0.5)
-    setQuestions(shuffled.slice(0, 5))
+    const selectedQuestions = shuffled.slice(0, 5)
+    setQuestions(selectedQuestions)
+    
+    // Assign 4 random images to each question (one per option)
+    const imagesForQuestions = selectedQuestions.map(() => {
+      const shuffledImages = [...sentientImages].sort(() => Math.random() - 0.5)
+      return shuffledImages.slice(0, 4)
+    })
+    setQuestionImages(imagesForQuestions)
   }, [])
 
   if (questions.length === 0) return null
@@ -121,8 +143,19 @@ function Quiz({ onComplete }) {
                 whileHover={!showFeedback ? { scale: 1.02, x: 5 } : {}}
                 whileTap={!showFeedback ? { scale: 0.98 } : {}}
               >
-                <div className="option-letter">{optionLetter}</div>
-                <div className="option-text">{option.substring(3)}</div>
+                <div className="option-content">
+                  <div className="option-image-container">
+                    <img 
+                      src={questionImages[currentQuestion]?.[index]} 
+                      alt={`Option ${optionLetter}`}
+                      className="option-image"
+                    />
+                  </div>
+                  <div className="option-info">
+                    <div className="option-letter">{optionLetter}</div>
+                    <div className="option-text">{option.substring(3)}</div>
+                  </div>
+                </div>
                 {showFeedback && isCorrect && (
                   <motion.div
                     className="check-icon"
