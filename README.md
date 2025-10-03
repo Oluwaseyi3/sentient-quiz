@@ -1,77 +1,84 @@
 # Sentient Quiz App
 
-A modern, professional quiz application designed to test knowledge about the Sentient ecosystem. Features unique animations, immediate feedback, and a sleek pink gradient theme.
+A modern quiz application featuring dynamic question selection, animated feedback, and comprehensive performance tracking. Built with React and Framer Motion to test knowledge about the Sentient ecosystem.
 
 ## Overview
 
-The Sentient Quiz App randomly selects 5 questions from a pool of 65 comprehensive questions about the Sentient ecosystem. Users receive immediate visual feedback after each answer with smooth animations and can review their performance with detailed results at the end.
+The Sentient Quiz App randomly selects 5 questions from a curated pool of 65 questions covering all aspects of the Sentient ecosystem. The application provides immediate visual feedback with sophisticated animations and delivers detailed performance analytics upon completion.
 
 ## Features
 
-### Quiz Experience
-- 5 randomly selected questions per session from 65 total questions
-- Immediate animated feedback after each answer
-- Progress indicator with animated dots showing completion
-- Real-time score badge tracking
-- Professional card-based UI with smooth animations
-- Unique animations for:
-  - Answer selection with slide effect
-  - Correct answers with check icon animation
-  - Wrong answers with shake effect and cross icon
-  - Card entrance animations
+### Quiz Mechanics
+- Random selection of 5 questions per session from 65-question database
+- Immediate animated feedback for each answer
+- Animated progress indicator with dot-based completion tracking
+- Real-time score tracking with glassmorphism badge
+- Card-based answer interface with letter-labeled options (A, B, C, D)
+- Session-based randomization ensures varied gameplay
 
-### Results Screen
-- Animated circular progress indicator showing percentage score
-- Modern performance grading system:
+### Answer Feedback Animations
+- **Selection State**: Slide-in effect and color highlight on selection
+- **Correct Answers**: Rotating check icon (✓) with spring animation
+- **Wrong Answers**: Shake animation with rotating cross icon (✕)
+- **Card Entrance**: Staggered fade-in animations for all options
+- **Progress Dots**: Scale and color transitions on question completion
+
+### Results Analytics
+- Circular SVG progress indicator with animated stroke
+- Performance grading system:
   - Perfect (100%)
   - Excellent (80-99%)
   - Good (60-79%)
   - Fair (40-59%)
   - Keep Learning (0-39%)
-- Statistics grid showing correct, wrong, and total answers
-- Detailed answer review with:
-  - Color-coded correct/wrong indicators
-  - Question text
-  - Comparison of user's answer vs correct answer (for wrong answers)
-- Smooth entrance animations for all elements
-- Ability to retake with new random questions
+- Statistics grid displaying:
+  - Correct answers count
+  - Wrong answers count
+  - Total questions
+- Detailed answer review section with:
+  - Color-coded status indicators
+  - Question text display
+  - Selected vs correct answer comparison (for incorrect responses)
+- Sequential entrance animations for all result elements
 
-### Topics Covered
-- What is Sentient - Core purpose and contrast with traditional AI
-- Mission - Democratizing AI development
-- The GRID - Global network of compute and resources
-- Artifacts - On-chain records of AI models, data, and code
-- Architecture - Decentralized modular design
-- Token Economy - SENT token roles and incentives
-- Reps - Community governance representatives
-- Builders - Developers and creators
-- Stakers - Security and alignment
-- Users - Ecosystem participants
-- Openness and Utility - Sentient's collaborative approach
+### Question Coverage
+- **Sentient Fundamentals**: Core purpose, mission, and contrast with traditional AI
+- **Infrastructure**: The GRID - global network architecture
+- **Data Layer**: Artifacts - on-chain AI model records
+- **System Design**: Decentralized modular architecture
+- **Economics**: SENT token roles, staking mechanisms, and incentive structures
+- **Governance**: Reps - community representatives
+- **Ecosystem Roles**: Builders, Stakers, and Users
+- **Philosophy**: Openness, transparency, and collaborative AI development
 
 ## Technologies Used
 
 ### Frontend Framework
-- **React 18** - Component-based UI library
-- **JSX** - JavaScript XML syntax
+- **React 18** - Component-based UI architecture
+- **JSX** - Declarative component syntax
+- **React Hooks** - useState, useEffect for state management
 
 ### Animation & UX
-- **Framer Motion** - Animation library for smooth transitions
-  - Screen transitions between start/quiz/results
-  - Progress animations
-  - Answer reveal animations
-  - Circular progress indicator
-- **CSS3** - Custom styling with gradients and responsive design
+- **Framer Motion** - Production-ready animation library
+  - AnimatePresence for screen transitions
+  - Motion components for micro-interactions
+  - Spring physics for natural movement
+  - SVG path animations for progress indicators
+- **CSS3** - Advanced styling features
+  - Glassmorphism with backdrop-filter
+  - CSS Grid and Flexbox layouts
+  - Keyframe animations for shake effects
+  - CSS transforms and transitions
 
 ### Build Tools
-- **Vite** - Fast development server with hot module replacement
-- **npm** - Package management
+- **Vite** - Fast development server with HMR (Hot Module Replacement)
+- **npm** - Package management and dependency resolution
 
-### UI Components
-- Progress bar with real-time updates
-- Circular SVG progress indicator
-- Scrollable answer review section
-- Responsive design for mobile and desktop
+### Design Patterns
+- Component composition for reusable UI elements
+- Controlled components for form state
+- Conditional rendering for dynamic UI states
+- Props-based communication between components
 
 ## Installation
 
@@ -86,7 +93,7 @@ npm install
 npm run dev
 ```
 
-The quiz will be available at `http://localhost:5173`
+The application will be available at `http://localhost:5173`
 
 ## Build for Production
 
@@ -107,57 +114,77 @@ sentient-quiz/
 │       └── logo.jpg
 ├── src/
 │   ├── components/
-│   │   ├── Quiz.jsx
-│   │   ├── Quiz.css
-│   │   ├── Results.jsx
-│   │   └── Results.css
+│   │   ├── Quiz.jsx           # Main quiz component
+│   │   ├── Quiz.css           # Quiz styling
+│   │   ├── Results.jsx        # Results screen component
+│   │   └── Results.css        # Results styling
 │   ├── data/
-│   │   └── questions.js
-│   ├── App.jsx
-│   ├── App.css
-│   ├── main.jsx
-│   └── index.css
-├── index.html
-├── package.json
-└── vite.config.js
+│   │   └── questions.js       # 65 Sentient questions
+│   ├── App.jsx                # Main application component
+│   ├── App.css                # Global application styles
+│   ├── main.jsx               # Application entry point
+│   └── index.css              # Base styles and resets
+├── index.html                 # HTML template
+├── package.json               # Dependencies and scripts
+├── vite.config.js             # Vite configuration
+└── .gitignore                 # Git ignore rules
 ```
 
-## How It Works
-
-### Quiz Flow
-1. **Start Screen** - Welcome screen with Sentient logo and start button
-2. **Quiz Screen** - Sequential questions with immediate feedback
-3. **Results Screen** - Final score with detailed review
+## Development
 
 ### State Management
-- React useState hooks for managing:
-  - Current question index
-  - Selected answers
-  - Score calculation
-  - User answer history
-- Framer Motion AnimatePresence for screen transitions
+The application uses React's built-in hooks for state management:
+- **Quiz.jsx**: Manages current question index, selected answers, score, and feedback state
+- **App.jsx**: Orchestrates quiz state (start, quiz, results) and score persistence
+- **Results.jsx**: Receives and displays final score and answer history
 
-### Scoring System
-- Each correct answer adds 1 point
-- Final score displayed as both raw score (e.g., 45/65) and percentage
-- Performance grade assigned based on percentage
-- Wrong answers highlighted in review with correct answers shown
+### Component Architecture
+- **App Component**: Top-level state management and screen routing
+- **Quiz Component**: Question display, answer handling, and progress tracking
+- **Results Component**: Performance analytics and answer review
 
-## Customization
+### Animation Strategy
+Framer Motion animations are applied at multiple layers:
+1. Screen-level transitions using AnimatePresence
+2. Component entrance animations with staggered delays
+3. Interactive micro-animations on user actions
+4. SVG path animations for visual feedback
 
-To modify the quiz:
-- Edit questions in `src/data/questions.js`
-- Adjust grading thresholds in `Results.jsx`
-- Modify colors in CSS files
-- Change animation timings in component files
+### Randomization
+Questions are randomized using array shuffling with Fisher-Yates algorithm:
+```javascript
+const shuffled = [...sentientQuestions].sort(() => Math.random() - 0.5)
+const selected = shuffled.slice(0, 5)
+```
 
 ## Browser Compatibility
 
 Modern browsers with support for:
-- ES6+ JavaScript
+- ES6+ JavaScript (arrow functions, destructuring, spread operator)
 - CSS Grid and Flexbox
+- CSS backdrop-filter (for glassmorphism effects)
 - SVG animations
-- CSS Transforms and Transitions
+- CSS transforms and transitions
+
+## Customization
+
+### Modifying Question Pool
+Edit `src/data/questions.js` to add, remove, or modify questions.
+
+### Adjusting Question Count
+Change the slice parameter in `Quiz.jsx`:
+```javascript
+setQuestions(shuffled.slice(0, 5)) // Change 5 to desired count
+```
+
+### Updating Grade Thresholds
+Modify the grading logic in `Results.jsx`:
+```javascript
+if (percentage >= 80) { grade = 'Excellent' }
+```
+
+### Customizing Colors
+Update the pink gradient theme in `index.css` and component CSS files.
 
 ## License
 

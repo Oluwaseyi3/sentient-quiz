@@ -38,7 +38,7 @@ function App() {
               animate={{ scale: 1 }}
               transition={{ type: "spring", duration: 0.8 }}
             >
-              <img src="/sentient/logo.jpg" alt="Sentient Labs" className="logo" />
+              <img src="/logo.jpg" alt="Sentient Labs" className="logo" />
             </motion.div>
             <motion.h1
               initial={{ y: -50, opacity: 0 }}
